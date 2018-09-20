@@ -1,0 +1,16 @@
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+
+.member-name-wrapper {
+  padding: 15px;
+}
+.member-name {
+  font-size: 12px;
+  color: #444;
+}
+
+.list-group-item {
+  line-height: 2.5;
+}
