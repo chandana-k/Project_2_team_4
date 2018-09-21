@@ -1,0 +1,1 @@
+https://help.github.com/articles/about-commit-signature-verification/
