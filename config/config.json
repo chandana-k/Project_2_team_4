@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "1234",
-    "database": "exampledb2",
+    "password": "Carrie78",
+    "database": "WishWidget",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "1234",
-    "database": "database_test",
+    "password": "Carrie78",
+    "database": "WishWidget",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
