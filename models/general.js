@@ -4,12 +4,12 @@ module.exports = function(sequelize, DataTypes) {
     // The email cannot be null, and must be a proper email before creation
     
     // list of tables created in JSON format so that we can use JSON.stringify/JSON.parse
-    item_name: {
+    itemName: {
       type: DataTypes.STRING,
       allowNull: false
     },
 
-    item_URL: {
+    itemURL: {
       type: DataTypes.STRING,
       allowNull: false
     },

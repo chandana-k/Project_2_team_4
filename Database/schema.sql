@@ -1,0 +1,3 @@
+CREATE DATABASE WishWidget;
+USE WishWidget;
+DROP DATABASE WishWidget;
