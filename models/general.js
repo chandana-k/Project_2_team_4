@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var General = sequelize.define("General", {
     // The item cannot be null, and must have a URL for online access
     item: {
@@ -8,13 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     // The item_URL cannot be null. It is needed for online access.
-    item_URL: {
+    itemURL: {
       type: DataTypes.STRING,
       allowNull: false
     }
 
-   
+
   });
-  
+
   return General;
 };
