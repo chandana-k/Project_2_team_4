@@ -1,20 +1,11 @@
 {
   "development": {
+    "port": 3308,
     "username": "root",
-    "password": "1234",
-    "database": "exampledb2",
+    "password": "Carrie78",
+    "database": "wishwidget",
     "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": "1234",
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "production": {
-    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
+ 
 }
