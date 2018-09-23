@@ -18,15 +18,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    tables_made: {  //this column has a list of tables the user created and thus has read/write privileges.
-      defaultValue: `{}`,
+    tablesMade: {  //this column has a list of tables the user created and thus has read/write privileges.
+      defaultValue: '{}',
       type: DataTypes.STRING,
     },
-    view_permission: { //This column  has a list of table names that user may read but not write.
-      defaultValue: `{}`,
+    viewPermission: { //This column  has a list of table names that user may read but not write.
+      defaultValue: '{}',
       type: DataTypes.STRING
     }
-    
+
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   Users.prototype.validPassword = function(password) {
