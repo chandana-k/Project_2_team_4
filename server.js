@@ -23,6 +23,8 @@ app.use(passport.session());
 require("./routes/htmlRoutes.js")(app);
 require("./routes/authRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
+// @Karsten test route for database functionality
+require("./routes/test.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
