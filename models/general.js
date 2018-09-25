@@ -13,6 +13,10 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     }
 
+    itemURL: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    }
 
   });
 
