@@ -21,13 +21,12 @@ module.exports = function(sequelize, DataTypes) {
     tablesMade: {  //this column has a list of tables the user created and thus has read/write privileges.
       defaultValue: '{}',
       type: DataTypes.STRING,
-    },
-    viewPermission: { //This column  has a list of table names that user may read but not write.
-      defaultValue: '{}',
-      type: DataTypes.STRING
     }
-
   });
+
+  Users.associate = function(models) { //one to many association with sequelize. Users table is associated with tables.
+    Users.hasMany(models.General);
+  };
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   Users.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
@@ -39,4 +38,3 @@ module.exports = function(sequelize, DataTypes) {
   });
   return Users;
 };
-

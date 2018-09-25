@@ -2,6 +2,7 @@
   "development": {
     "username": "root",
     "password": "Carrie78",
+    "port": 3308,
     "database": "WishWidget",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -9,6 +10,7 @@
   "test": {
     "username": "root",
     "password": "Carrie78",
+    "port":3308,
     "database": "WishWidget",
     "host": "127.0.0.1",
     "dialect": "mysql"

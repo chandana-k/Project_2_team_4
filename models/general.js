@@ -18,8 +18,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false, //0 in sql database. 1 is true.
-    }
+    },
+
+    
+
   });
+
+  General.associate = function(models) {
+    General.belongsTo(models.User);
+    
+  };
 
   return General;
 };
