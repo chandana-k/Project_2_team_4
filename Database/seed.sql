@@ -37,3 +37,33 @@ INSERT INTO Tables (tableName, createdAt, updatedAt, UserId) VALUES (
   "2017-11-17 07:38:07",
   1
 );
+
+/* Seed the permissions table */
+
+INSERT INTO permissions (createdAt, updatedAt, tableId, userId) VALUES (
+  "2017-11-17 07:38:07",
+  "2017-11-17 07:38:07",
+  1,
+  2
+);
+
+INSERT INTO permissions (createdAt, updatedAt, tableId, userId) VALUES (
+  "2017-11-17 07:38:07",
+  "2017-11-17 07:38:07",
+  1,
+  3
+);
+
+INSERT INTO permissions (createdAt, updatedAt, tableId, userId) VALUES (
+  "2017-11-17 07:38:07",
+  "2017-11-17 07:38:07",
+  1,
+  4
+);
+
+INSERT INTO permissions (createdAt, updatedAt, tableId, userId) VALUES (
+  "2017-11-17 07:38:07",
+  "2017-11-17 07:38:07",
+  3,
+  1
+);
