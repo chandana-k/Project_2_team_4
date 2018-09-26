@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function (app) {
   app.get("/user", function (req, res) {
     db.User.findAll({
-      include: [{ model: db.Table, as: "tablesOwned" }]
+      include: [{ model: db.Table, as: "canView" }]
     }).then(function (results) {
       res.json(results);
     });

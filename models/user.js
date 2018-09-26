@@ -17,6 +17,11 @@ module.exports = function (sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    uname: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
     }
   });
 
@@ -27,6 +32,11 @@ module.exports = function (sequelize, DataTypes) {
     User.hasMany(models.Table, {
       onDelete: "cascade",
       as: "tablesOwned"
+    });
+    User.belongsToMany(models.Table, {
+      as: "canView",
+      through: "permissions",
+      foreignKey: "userId"
     });
   };
 
