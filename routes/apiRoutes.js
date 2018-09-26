@@ -1,10 +1,10 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all of the list items on the wish list. Each item has its own card on the front end
+  app.get("/api/general", function(req, res) {
+    db.general.findAll({}).then(function(dbUser) {
+      res.json(dbUser);
     });
   });
 

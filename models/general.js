@@ -24,10 +24,9 @@ module.exports = function(sequelize, DataTypes) {
 
   });
 
-  General.associate = function(models) {
-    General.belongsTo(models.User);
-    
-  };
-
   return General;
+    
 };
+
+  
+
