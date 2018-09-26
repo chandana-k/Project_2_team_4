@@ -26,5 +26,3 @@ module.exports = function (sequelize, DataTypes) {
   return Table;
 };
 
-// User.belongsToMany(Table, { as: 'canView, through: 'permissions', foreignKey: 'userId' })
-// Table.belongsToMany(User, { as: 'hasViewers', through: 'permissions', foreignKey: 'tableId' })
