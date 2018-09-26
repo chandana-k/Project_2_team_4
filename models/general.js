@@ -1,20 +1,32 @@
-module.exports = function (sequelize, DataTypes) {
+// Creating our User model
+module.exports = function(sequelize, DataTypes) {
   var General = sequelize.define("General", {
-    // The item cannot be null, and must have a URL for online access
-    item: {
+    // The email cannot be null, and must be a proper email before creation
+    
+    // list of tables created in JSON format so that we can use JSON.stringify/JSON.parse
+    itemName: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: false
+      allowNull: false
     },
 
-    // The item_URL cannot be null. It is needed for online access.
     itemURL: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
 
+    purchased: { //if item is purchased then this turns true and allows item to be removed from registry.
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false, //0 in sql database. 1 is true.
+    },
+
+    
 
   });
 
   return General;
+    
 };
+
+  
+

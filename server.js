@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
+var hb = require("express-handlebars");
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -19,8 +20,11 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
+//set-up for handlebars
+app.engine("handlebars", hb({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // Requiring our routes
-require("./routes/htmlRoutes.js")(app);
 require("./routes/authRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
 // @Karsten test route for database functionality

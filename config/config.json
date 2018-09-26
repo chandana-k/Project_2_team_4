@@ -1,15 +1,17 @@
 {
   "development": {
-    "username": "karsten",
-    "password": "cheese",
-    "database": "project2",
+    "username": "root",
+    "password": "Carrie78",
+    "port": 3308,
+    "database": "WishWidget",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "1234",
-    "database": "database_test",
+    "password": "Carrie78",
+    "port":3308,
+    "database": "WishWidget",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
