@@ -28,9 +28,14 @@ require("./routes/apiRoutes.js")(app);
 // @Karsten test route for database functionality
 require("./routes/test.js")(app);
 
+var syncOptions = { force: false };
+if (process.end.NODE_ENV === "test") {
+  syncOptions.force = true;
+}
+
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
