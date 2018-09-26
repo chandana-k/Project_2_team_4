@@ -44,10 +44,10 @@
       <!-- Main Container -->
       <div class="jumbotron">
         <h1 class="display-3">WishWidget</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p class="lead">What are you wishing for today?</p>
         <form class="form-inline mt-2 mt-md-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"><br>
-          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+          <button class="btn btn-outline-success my-2 my-sm-0" id = "searchButton" type="submit">Search</button>
         </form>
       </div>
       <div class="content">
@@ -289,15 +289,38 @@
     </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
-  <!-- <script type="text/javascript" src="js/members.js"></script> -->
-    <!-- <script>
-  $(document).ready(function() {
 
-  });
-    
-    </script> -->
+
+  <script>
+
+$("#searchButton").on("click", function(event) {
+    event.preventDefault();
+
+// grab text from search box
+    var search = $("#searchButton").val();
+
+//  construct our URL   
+    var queryURL = "https://openapi.etsy.com/v2/listings/trending?api_key=a2p83t9puv67kp0dnvsd4yka";
+//    https://openapi.etsy.com/v2/users/etsystore?api_key=a2p83t9puv67kp0dnvsd4yka
+// https://urlreq.appspot.com/req?method=GET&url=https://www.etsy.com/?=" + search + "&api_key=a2p83t9puv67kp0dnvsd4yka
+// this one works
+// https://openapi.etsy.com/v2/listings/trending?api_key=a2p83t9puv67kp0dnvsd4yka
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            $("#searchButton").data(JSON.stringify(response));
+        });
+
+});
+
+
+  
+  </script>
 
 </body>
 

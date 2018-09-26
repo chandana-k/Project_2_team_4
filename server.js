@@ -8,6 +8,8 @@ var passport = require("./config/passport");
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
 var db = require("./models");
+// db.User = require("./models/user");
+// db.Table = require("./models/tables");
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();
@@ -24,22 +26,18 @@ app.use(passport.session());
 require("./routes/htmlRoutes.js")(app);
 require("./routes/authRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
+// @Karsten test route for database functionality
+require("./routes/test.js")(app);
 
-
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
+var syncOptions = { force: false };
+if (process.end.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
+// Syncing our database and logging a message to the user upon success
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
 
