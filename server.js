@@ -29,7 +29,7 @@ require("./routes/apiRoutes.js")(app);
 require("./routes/test.js")(app);
 
 var syncOptions = { force: false };
-if (process.end.NODE_ENV === "test") {
+if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
