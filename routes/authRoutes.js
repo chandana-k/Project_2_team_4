@@ -57,7 +57,7 @@ module.exports = function (app) {
   });
 
   function createGeneralTable(uname, tabName) {
-    db.sequelize.query("CREATE TABLE " + tabName + " (id INT not null auto_increment, itemName VARCHAR(255) not null UNIQUE, itemUrl varchar(255) not null, public BOOLEAN default false, primary key (id));").then(function (resp) {
+    db.sequelize.query("CREATE TABLE " + tabName + " (id INT not null auto_increment, itemName VARCHAR(255) not null UNIQUE, itemUrl varchar(255) not null, public BOOLEAN default false, userShopped INT, primary key (id));").then(function (resp) {
       console.log(resp);
       db.User.findOne({
         where: {

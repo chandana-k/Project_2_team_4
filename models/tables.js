@@ -5,7 +5,8 @@ module.exports = function (sequelize, DataTypes) {
     tableName: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+    eventDate: DataTypes.Date
   });
 
   Table.associate = function (models) {
