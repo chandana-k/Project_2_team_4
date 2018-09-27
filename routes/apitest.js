@@ -17,27 +17,32 @@ var keys = require("../public/keys.js");
 
 module.exports = function(app) {
  app.get("/", function(req, res) {
-...
+
      var searchButton = function() {
             var request = require("request");
             
-            request ({
-                EBAY_SECRET: process.env.ETSY_SECRET,
-                EBAY_ID: process.env.EBAY_ID,
-                EBAY_DEV_ID: process.env.EBAY_DEV_ID
+            request({
+                ETSY_SECRET: process.env.ETSY_SECRET,
+                ETSY_ID: process.env.ETSY_ID
             });
 
+            // request ({
+            //     EBAY_SECRET: process.env.ETSY_SECRET,
+            //     EBAY_ID: process.env.EBAY_ID,
+            //     EBAY_DEV_ID: process.env.EBAY_DEV_ID
+            // });
+        
 
-            params ={
-                appid: ("LaceyMcC-WishWidg-SBX-cf8fa4158-0faac1ff"),
-                version: ("967"),
-                siteid: ("0")
-                };
+
+            // params ={
+            //     appid: ("EBAY_ID),
+            //     version: ("967"),
+            //     siteid: ("0")
+            //     };
 
         };
 
         res.sendFile(path.join(__dirname, "../public/example.html"));
         searchButton();
     });
-
 };
