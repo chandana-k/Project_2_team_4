@@ -303,17 +303,32 @@ $("#searchButton").on("click", function(event) {
     var search = $("#searchButton").val();
 
 //  construct our URL   
-    var queryURL = "https://openapi.etsy.com/v2/";
+    // var queryURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=soap&limit=12&includes=Images:1&api_key=a2p83t9puv67kp0dnvsd4yka";
+        var queryURL = "/etsysearch"
 
-        $.ajax({
+        $.post("/etsysearch", {
             url: queryURL,
-            method: "GET"
-        }).then(function(response) {
+            data: search,
+            method: "POST"
+        }).then(function(data) {
+            alert("Search Loaded" + data);
             console.log("response");
-            $("#searchButton").data(JSON.stringify(response));
+            $("#searchButton").data(JSON.stringify(data));
+        
         });
 
+        // $.ajax({
+        //     url: queryURL,
+        //     data: search,
+        //     method: "POST"
+        // }).then(function(response) {
+        //     console.log("response");
+        //     $("#searchButton").data(JSON.stringify(response));
+        // });
+
 });
+
+
 
 
   
