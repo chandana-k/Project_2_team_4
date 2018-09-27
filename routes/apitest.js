@@ -13,38 +13,6 @@ var keys = require("../public/keys.js");
 
 
 
-// ETSY OAuth
-
-// var $req_token, ETSY_ID;
-
-// $req_token = ETSY_ID.getRequestToken();
-
-// print ( $req_token [ "login_URL" ]+ "\n");
-
-// var $request_token;
-
-// $request_token = $_GET("oauth_token");
-
-// $request_token();
-
-
-
-
-// var ClientOAuth2 = require('client-oauth2')
-
- 
-// var etsyAuth = new ClientOAuth2({
-//   ETSY_ID: 'a2p83t9puv67kp0dnvsd4yka',
-//   ETSY_SECRET: 'pynunvtzov',
-//   accessTokenUri: 'https://etsy.com/login/oauth/access_token',
-//   authorizationUri: 'https://etsy.com/login/oauth/authorize',
-//   redirectUri: 'http://etsy.com/callback',
-//   scopes: ['listings_w', 'listings_d']
-// });
-
-// etsyAuth();
-
-
 
 
 module.exports = function(app) {
