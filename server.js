@@ -25,14 +25,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Set Handlebars.
-var exphbs = require("express-handlebars");
+// var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
 
-// Import routes and give the server access to them.
-var routes = require("./controllers/wishController.js");
-app.use(routes);
+// // Import routes and give the server access to them.
+// var routes = require("./controllers/wishController.js");
+// app.use(routes);
 
 
 // Requiring our routes
@@ -53,6 +53,7 @@ db.sequelize.sync().then(function () {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
+
 
 module.exports = app;
 
