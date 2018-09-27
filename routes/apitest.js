@@ -12,10 +12,14 @@ var keys = require("../public/keys.js");
     });
 
 
-module.exports = function(app) {
 
-    app.get("/", function(req, res) {
-        var searchButton = function() {
+// ETSY OAuth
+
+
+module.exports = function(app) {
+ app.get("/", function(req, res) {
+...
+     var searchButton = function() {
             var request = require("request");
             
             request ({
