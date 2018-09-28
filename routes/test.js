@@ -1,6 +1,6 @@
 var db = require("../models");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Get each user and include all tables that each user can view
   // app.get("/user", function (req, res) {
   //   db.User.findAll({
