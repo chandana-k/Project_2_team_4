@@ -292,33 +292,58 @@
   <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
-
-
   <script>
+
 
 $("#searchButton").on("click", function(event) {
     event.preventDefault();
-
-// grab text from search box
-    var search = $("#searchButton").val();
-
-//  construct our URL   
-    var queryURL = "https://openapi.etsy.com/v2/";
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function(response) {
-            console.log("response");
-            $("#searchButton").data(JSON.stringify(response));
-        });
-
 });
+// <html>
+// <head>
+// <title>Etsy jQuery Demo</title>
+// <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js">
+// (function($){
 
+// // grab text from search box
+//     var search = $("#searchButton").val();
 
+// //  construct our URL   
+// $(document).ready(function(){
+//         $('#etsy-search').bind('submit', function() {
+//             api_key = "a2p83t9puv67kp0dnvsd4yka";
+//             terms = $('#etsy-terms').val();
+//             etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords="+
+//                 terms+"&limit=9&includes=Images:1&api_key="+api_key;
+//                 $('#etsy-images').empty();
+//             $('<p></p>').text('Searching for '+terms).appendTo('#etsy-images');
+//             $.ajax({
+//                 url: etsyURL,
+//                 dataType: 'jsonp',
+//                 success: function(data) {
+//                     if (data.ok) {
+//                         $('#etsy-images').empty();
+//                         if (data.count > 0) {
+//                             $.each(data.results, function(i,item) {
+//                                 $("<img/>").attr("src", item.Images[0].url_75x75).appendTo("#etsy-images").wrap(
+//                                     "<a href='" + item.url + "'></a>"
+//                                 );
+//                                 if (i%4 == 3) {
+//                                     $('<br/>').appendTo('#etsy-images');
+//                                 }
+//                             });
+//                         } else {
+//                             $('<p>No results.</p>').appendTo('#etsy-images');
+//                         }
+//                     } else {
+//                         $('#etsy-images').empty();
+//                         alert(data.error);
+//                     }
+//                 }
+//                 return false;
+//         })
+//     });
   
-  </script>
-
+</script>
 </body>
 
 </html>

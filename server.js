@@ -34,6 +34,9 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them.
 // var controller = require("./controllers/wishController.js")(app);
 // app.use(controller);
+// // Import routes and give the server access to them.
+// var routes = require("./controllers/wishController.js");
+// app.use(routes);
 
 
 // Requiring our routes
@@ -54,6 +57,7 @@ db.sequelize.sync().then(function () {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
+
 
 module.exports = app;
 
