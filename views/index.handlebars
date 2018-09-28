@@ -1,70 +1,74 @@
-  <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <!-- Modal Popup -->
-          <ul class="nav nav-pills float-right">
-            <li class="nav-item">
-              <a class="nav-link active" href="#" data-toggle="modal" data-target="#myModal">Login <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sign up</a>
-            </li>
-          </ul>
-        </nav>
-        <!-- <h3 class="text-muted">Project name</h3> -->
-      </div>
-      <!-- Main Container -->
-      <div class="jumbotron">
-        <h1 class="display-3">WishWidget</h1>
-        <p class="lead">What are you wishing for today?</p>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"><br>
-          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-        </form>
-      </div>
-      <div class="content">
-          <div class="container">
-              <div class="row">
-                {{#each thing}}
-                <!-- make this a for loop in handlebars -->
-                {{> wishes/wishes-block}}
-                {{/each}}
-              </div>
-          </div>
-      </div>
-    </div>
-    <footer class="footer">
-      <p>&copy; WishWidget 2018</p>
-      <nav>
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Social</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Github</a>
-              </li>
-          </ul>
-        </nav>
-    </footer>
-
-    <!-- Modal -->
-    <div class="modal fade modal-center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <input class="form-control form-control-lg" type="text" placeholder="User name">
-              <input class="form-control form-control-lg" type="text" placeholder="Password">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Login</button>
-          </div>
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <!-- Modal Popup -->
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" data-toggle="modal" data-target="#myModal">Login <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sign up</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- <h3 class="text-muted">Project name</h3> -->
+  </div>
+  <!-- Main Container -->
+  <div class="jumbotron">
+    <h1 class="display-3">WishWidget</h1>
+    <p class="lead">What are you wishing for today?</p>
+    <form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"><br>
+      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+    </form>
+  </div>
+  <div class="content">
+    CONTENT
+    <div class="container">
+      <div class="row">
+        <div>
         </div>
+        {{#each wishes}}
+        <!-- make this a for loop in handlebars -->
+        {{> wishes/wishes-block}}
+        {{/each}}
       </div>
     </div>
+  </div>
+</div>
+<footer class="footer">
+  <p>&copy; WishWidget 2018</p>
+  <nav>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Social</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Github</a>
+      </li>
+    </ul>
+  </nav>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade modal-center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control form-control-lg" type="text" placeholder="User name">
+        <input class="form-control form-control-lg" type="text" placeholder="Password">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
