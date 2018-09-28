@@ -240,6 +240,7 @@ body {
 .modal-open .modal.modal-center {
   display: flex!important;
   align-items: center!important;
+
   .modal-dialog {
     flex-grow: 1;
   }
@@ -247,6 +248,7 @@ body {
 
 .modal-dialog {
   width: 380px;
+  flex-grow: 1;
 }
 
 /* OTHER */
