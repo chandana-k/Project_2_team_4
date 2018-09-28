@@ -48,6 +48,7 @@ db.sequelize.sync().then(function () {
   });
 });
 
+
 module.exports = app;
 
 // Syncing our database and logging a message to the user upon success
