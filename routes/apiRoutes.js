@@ -38,6 +38,24 @@ module.exports = function (app) {
     });
   });
 
+ 
+  app.post("/etsysearch", function(req, res) {
+      console.log("etsy route is hit");
+      console.log("body", req.body);
+      res.send("hey");
+       //  var searchButton = function() {
+       //         var request = require("request");
+               
+       //         request({
+       //             ETSY_SECRET: process.env.ETSY_SECRET,
+       //             ETSY_ID: process.env.ETSY_ID
+       //         });
+       //     };
+   
+       //     res.sendFile(path.join(__dirname, "../public/example.html"));
+       //     searchButton();
+       });
+
   // Create a new example
   app.post("/api/examples", function (req, res) {
     db.Example.create(req.body).then(function (dbExample) {
