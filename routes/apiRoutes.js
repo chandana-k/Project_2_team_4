@@ -78,7 +78,7 @@ module.exports = function (app) {
             res.render("auth", { wishes: hbp });
           }
           else {
-            res.render("non-auth", { wishes: hbp });
+            res.render("card", { wishes: hbp });
           }
         }
         else {
