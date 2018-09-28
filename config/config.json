@@ -1,8 +1,7 @@
 {
   "development": {
-    "username": "root",
-    "password": "Carrie78",
-    "port": 3308,
+    "username": "karsten",
+    "password": "cheese",
     "database": "WishWidget",
     "host": "127.0.0.1",
     "dialect": "mysql"
