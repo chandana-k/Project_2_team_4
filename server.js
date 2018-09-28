@@ -18,26 +18,21 @@ var db = require("./models");
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
+
 // We need to use sessions to keep track of our user's login status
 app.use(session({
-  secret: "keyboard cat", resave: true, saveUninitialized: true }));
+  secret: "keyboard cat", 
+  resave: true, 
+  saveUninitialized: true 
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Set Handlebars.
+// Set app to use handlebars
 var exphbs = require("express-handlebars");
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
-// Import routes and give the server access to them.
-// var controller = require("./controllers/wishController.js")(app);
-// app.use(controller);
-// // Import routes and give the server access to them.
-// var routes = require("./controllers/wishController.js");
-// app.use(routes);
-
 
 // Requiring our routes
 require("./routes/htmlRoutes.js")(app);
