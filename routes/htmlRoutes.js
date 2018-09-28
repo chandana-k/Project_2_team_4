@@ -31,7 +31,6 @@ module.exports = function (app) {
     }
     // res.sendFile(path.join(__dirname, "../public/example.html")); // just for testing
     // res.sendFile(path.join(__dirname, "../public/signup.html"));
-    res.render("index", { wishes: hbobj });
     res.sendFile(path.join(__dirname, "../public/landing.html"));
   });
 
