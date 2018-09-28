@@ -22,9 +22,9 @@ app.use(express.static("public"));
 
 // We need to use sessions to keep track of our user's login status
 app.use(session({
-  secret: "keyboard cat", 
-  resave: true, 
-  saveUninitialized: true 
+  secret: "keyboard cat",
+  resave: true,
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -39,7 +39,7 @@ require("./routes/htmlRoutes.js")(app);
 require("./routes/authRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
 // @Karsten test route for database functionality
-require("./routes/test.js")(app);
+// require("./routes/test.js")(app);
 
 var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {

@@ -4,10 +4,10 @@
       <!-- Modal Popup -->
       <ul class="nav nav-pills float-right">
         <li class="nav-item">
-          <a class="nav-link active" href="#" data-toggle="modal" data-target="#myModal">Login <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="#" data-toggle="modal" data-target="#loginModal">Login <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#mySignupModal">Sign up</a>
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sign up</a>
         </li>
       </ul>
     </nav>
@@ -48,8 +48,8 @@
   </nav>
 </footer>
 
-<!-- Modal -->
-<div class="modal fade modal-center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+{{!-- Login modal --}}
+<div class="modal fade modal-center" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -60,19 +60,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <input class="form-control form-control-lg" type="text" placeholder="User name">
-        <input class="form-control form-control-lg" type="text" placeholder="Password">
+        <input class="form-control form-control-lg" type="text" placeholder="User name" id="login-email-input">
+        <input class="form-control form-control-lg" type="text" placeholder="Password" id="login-password-input">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Login</button>
+        <button type="button" class="btn btn-primary" id="login-button">Login</button>
       </div>
     </div>
   </div>
 </div>
 
 {{!-- Sign up Modal --}}
-<div class="modal fade modal-center" id="mySignupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade modal-center" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
