@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var removePunctuation = require('remove-punctuation');
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -18,7 +19,7 @@ module.exports = function (app) {
   // otherwise send back an error
   app.post("/api/signup", function (req, res) {
     var email = req.body.email;
-  
+
     db.User.findOne({where: {email: email}})
       .then(function(result){
         //console.log("THIS IS RESULT FROM FINDONE: ",result.email)
@@ -57,6 +58,8 @@ module.exports = function (app) {
 
   function addRecord(req,res){ //this function creates the db record and creates the general table.
     var uname = req.body.email.substring(0, req.body.email.indexOf("@"));
+    uname = removePunctuation(uname);
+    console.log("Removed punctuation: " + uname);
     db.User.create({
       email: req.body.email,
       password: req.body.password,
