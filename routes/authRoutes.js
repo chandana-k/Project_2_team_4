@@ -8,6 +8,7 @@ module.exports = function (app) {
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
+    console.log(req.user);
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
@@ -20,27 +21,27 @@ module.exports = function (app) {
   app.post("/api/signup", function (req, res) {
     var email = req.body.email;
 
-    db.User.findOne({where: {email: email}})
-      .then(function(result){
+    db.User.findOne({ where: { email: email } })
+      .then(function (result) {
         //console.log("THIS IS RESULT FROM FINDONE: ",result.email)
-        if(result !== null) {
+        if (result !== null) {
           console.log("EMAIL MATCHED");
         } else {
           console.log("NO MATCHING EMAIL");
-          addRecord(req,res);
+          addRecord(req, res);
         }
-      } );
+      });
 
   });
 
   // Route for logging user out
-  app.get("/logout", function(req, res) {
+  app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
   });
 
   // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
+  app.get("/api/user_data", function (req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -56,7 +57,7 @@ module.exports = function (app) {
   });
 
 
-  function addRecord(req,res){ //this function creates the db record and creates the general table.
+  function addRecord(req, res) { //this function creates the db record and creates the general table.
     var uname = req.body.email.substring(0, req.body.email.indexOf("@"));
     uname = removePunctuation(uname);
     console.log("Removed punctuation: " + uname);
@@ -64,7 +65,8 @@ module.exports = function (app) {
       email: req.body.email,
       password: req.body.password,
       uname: uname
-    }).then(function () {
+    }).then(function (resp) {
+      console.log(resp.dataValues.id);
       // Create new general table for this new user... (This model hasn't been defined in models folder because we don)
       createGeneralTable(uname, uname + "General");
       res.redirect(307, "/api/login");
