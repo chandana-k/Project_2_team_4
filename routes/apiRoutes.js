@@ -1,4 +1,6 @@
 var db = require("../models");
+var request = require("request");
+var keys = require("../public/keys.js");
 
 module.exports = function(app) {
   // Get all examples
@@ -16,22 +18,20 @@ module.exports = function(app) {
   });
 
  
-  app.post("/etsysearch", function(req, res) {
+app.post("/etsysearch", function(req, res) {
       console.log("etsy route is hit");
-      console.log("body", req.body);
-      res.send("hey");
-       //  var searchButton = function() {
-       //         var request = require("request");
-               
-       //         request({
-       //             ETSY_SECRET: process.env.ETSY_SECRET,
-       //             ETSY_ID: process.env.ETSY_ID
-       //         });
-       //     };
-   
-       //     res.sendFile(path.join(__dirname, "../public/example.html"));
-       //     searchButton();
-       });
+      console.log("body", req.body.data);
+      var search = req.body.data;
+      request("https://openapi.etsy.com/v2/listings/active.js?keywords=" + search + "&limit=12&includes=Images:1&api_key=a2p83t9puv67kp0dnvsd4yka", function (error, response, body) {
+
+        console.log('error:', error); // Print the error if one occurred
+        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        console.log('body:', body); 
+
+        res.json(body);
+      });
+
+});
 
   // Create a new example
   app.post("/api/examples", function(req, res) {
