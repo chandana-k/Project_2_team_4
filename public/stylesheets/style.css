@@ -179,6 +179,7 @@ body {
     flex-flow: row wrap;
     -ms-flex-align: center;
     align-items: center;
+    justify-content: center;
 }
 @media (min-width: 576px) {
   .form-inline .form-control {
@@ -188,6 +189,7 @@ body {
       height: 50px;
       width: 100%;
       font-size: 24px;
+      margin-bottom: 16px;
   }
 }
 /* Responsive: Portrait tablets and up */
@@ -239,3 +241,4 @@ form.login {
 .list-group-item {
   line-height: 2.5;
 }
+

@@ -16,18 +16,17 @@
   <!-- Main Container -->
   <div class="jumbotron">
     <h1 class="display-3">WishWidget</h1>
-    <p class="lead">What are you wishing for today?</p>
-    <form class="form-inline mt-2 mt-md-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"><br>
-      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+    {{!-- <p class="lead">What are you wishing for today?</p> --}}
+    <form class="form-inline mt-2 mt-md-0" id="etsy-search">
+      <input id="etsy-terms" class="form-control mr-sm-2" type="text" placeholder="What are you wishing for today?" aria-label="What are you wishing for today?"><br>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
   <div class="content">
     CONTENT
     <div class="container">
+      <div id="etsy-images"></div>
       <div class="row">
-        <div>
-        </div>
         {{#each wishes}}
         <!-- make this a for loop in handlebars -->
         {{> wishes/wishes-block}}
@@ -72,3 +71,10 @@
     </div>
   </div>
 </div>
+
+{{!-- <form id="etsy-search">
+    <input id="etsy-terms" size="32">
+    <button>Search!</button>
+</form>
+
+<div id="etsy-images"></div> --}}
