@@ -31,7 +31,7 @@ module.exports = function (app) {
     }
     // res.sendFile(path.join(__dirname, "../public/example.html")); // just for testing
     // res.sendFile(path.join(__dirname, "../public/signup.html"));
-    res.sendFile(path.join(__dirname, "../public/landing.html"));
+    res.render("index", {obj: hbobj});
   });
 
   app.get("/login", function (req, res) {
