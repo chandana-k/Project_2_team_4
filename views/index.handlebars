@@ -16,7 +16,7 @@
       <!-- Main Container -->
       <div class="jumbotron">
         <h1 class="display-3">WishWidget</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p class="lead">What are you wishing for today?</p>
         <form class="form-inline mt-2 mt-md-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"><br>
           <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
@@ -25,7 +25,10 @@
       <div class="content">
           <div class="container">
               <div class="row">
+                {{#each thing}}
+                <!-- make this a for loop in handlebars -->
                 {{> wishes/wishes-block}}
+                {{/each}}
               </div>
           </div>
       </div>

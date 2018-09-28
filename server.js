@@ -2,6 +2,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var session = require("express-session");
+var path = require('path');
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 
@@ -17,7 +18,7 @@ var db = require("./models");
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 // We need to use sessions to keep track of our user's login status
 app.use(session({
   secret: "keyboard cat", resave: true, saveUninitialized: true }));
