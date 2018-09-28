@@ -1,59 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	 crossorigin="anonymous">
 	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
-	
+
 	<title>Wish Widget</title>
-	{{!-- <script src="https://code.jquery.com/jquery.js"></script> --}}
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript">
-	(function($){
-		$(document).ready(function(){
-			$('#etsy-search').bind('submit', function() {
-				api_key = "a2p83t9puv67kp0dnvsd4yka";
-				terms = $('#etsy-terms').val();
-				etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords="+
-					terms+"&limit=9&includes=Images:1&api_key="+api_key;
-				$('#etsy-images').empty();
-				$('<p></p>').text('Searching for '+terms).appendTo('#etsy-images');
-				$.ajax({
-					url: etsyURL,
-					dataType: 'jsonp',
-					success: function(data) {
-						if (data.ok) {
-							$('#etsy-images').empty();
-							if (data.count > 0) {
-								$.each(data.results, function(i,item) {
-									console.log("item content"+item);
-									$("<img/><br>").attr("src", item.Images[0].url_75x75).appendTo("#etsy-images").wrap(
-										"<a href='" + item.url + "'></a>"
-									);
-									//if (i%4 == 3) {
-										//$('<br/>').appendTo('#etsy-images');
-										$('<p>'+item.title+'<p><br>').appendTo('#etsy-images');
-										$('<p>'+item.price+'<p>').appendTo('#etsy-images');
-										$('<p>'+item.category_path+'<p>').appendTo('#etsy-images');
-												
-									//}
-								});
-							} else {
-								$('<p>No results.</p>').appendTo('#etsy-images');
-							}
-						} else {
-							$('#etsy-images').empty();
-							alert(data.error);
-						}
-					}
-				});
-				return false;
-			})
-		});
-	})(jQuery);
-	</script>
-	</head>
-	<body>
-		{{{ body }}}
-	</body>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+</head>
+
+<body>
+	{{{ body }}}
+	<script src="js/search.js"></script>
+</body>
+
 </html>

@@ -60,19 +60,33 @@ module.exports = function (app) {
 
   app.post("/api/search", function (req, res) {
     console.log("etsy route is hit");
-    var search = Object.keys(req.body)[0];
+    var search = Object.keys(req.body)[0].trim();
     console.log(search);
-    request("https://openapi.etsy.com/v2/listings/active.js?keywords=" + search + "&limit=10&includes=Images:1&api_key=" + keys.etsy.id, function (error, response, body) {
+    if (search.length !== 0) {
+      request("https://openapi.etsy.com/v2/listings/active.js?keywords=" + search + "&limit=10&includes=Images:1&api_key=" + keys.etsy.id, function (error, response, body) {
 
-      // Print the error if one occurred
-      console.log('error:', error);
-      // Print the response status code if a response was received
-      console.log('statusCode:', response && response.statusCode);
+        // Print the error if one occurred
+        console.log('error:', error);
+        // Print the response status code if a response was received
+        console.log('statusCode:', response && response.statusCode);
 
-      // Use eval ONLY BECAUSE WERE IN A TIME CRUNCH
-      var actualJson = eval(body).results;
-      res.jsonp(actualJson);
-    });
+        if (response.statusCode === 200) {
+          var results = JSON.parse(unwrapJSONP(body)).results;
+          var hbp = handlebarFriendlyJSON(results);
+          console.log(hbp);
+          if (req.user) {
+            res.render("auth", { wishes: hbp });
+          }
+          else {
+            res.render("card", { wishes: hbp });
+          }
+        }
+        else {
+          res.json({ message: "Error: " + response.statusCode });
+        }
+
+      });
+    }
 
   });
 
@@ -89,4 +103,28 @@ module.exports = function (app) {
       res.json(dbExample);
     });
   });
+
+  // JSONP helper functions:
+
+  // Turns the jsonp from Etsy into actual json
+  function unwrapJSONP(jsonp) {
+    return jsonp.slice(5, jsonp.length - 2);
+  }
+  // Turn the Etsy json into an object that handlebars can use
+  function handlebarFriendlyJSON(obj) {
+    var partialData = [];
+    obj.forEach(function (i) {
+      partialData.push({
+        name: i.title,
+        url: stripParams(i.url),
+        img: i.Images[0].url_fullxfull
+      });
+    });
+    return partialData;
+  }
+  // Strip parameters off etsy url
+  function stripParams(url) {
+    return url.substring(0, url.indexOf("?"));
+  }
+
 };

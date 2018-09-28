@@ -1,11 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
-    
-html,
-body {
+html, body {
   -moz-box-sizing: border-box;
-      box-sizing: border-box;
+  box-sizing: border-box;
   height: 100%;
-  width: 100%; 
+  width: 100%;
   background: #FFF;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -23,10 +21,12 @@ body {
   text-align: center;
   vertical-align: middle;
 }
+
 .fostrap-logo {
   width: 100px;
-  margin-bottom:15px
+  margin-bottom: 15px
 }
+
 h1.heading {
   color: #fff;
   font-size: 1.15em;
@@ -34,95 +34,111 @@ h1.heading {
   margin: 0 0 0.5em;
   color: #505050;
 }
+
 @media (min-width: 450px) {
   h1.heading {
     font-size: 3.55em;
   }
 }
+
 @media (min-width: 760px) {
   h1.heading {
     font-size: 3.05em;
   }
 }
+
 @media (min-width: 900px) {
   h1.heading {
     font-size: 3.25em;
     margin: 0 0 0.3em;
   }
-} 
+}
+
 .card {
-  display: block; 
+  display: block;
   margin: 20px;
   margin-bottom: 20px;
   line-height: 1.42857143;
   background-color: #fff;
   border-radius: 2px;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); 
-  transition: box-shadow .25s; 
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: box-shadow .25s;
 }
+
 .card:hover {
-  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .img-card {
   width: 100%;
-  height:200px;
-  border-top-left-radius:2px;
-  border-top-right-radius:2px;
-  display:block;
-    overflow: hidden;
+  height: 200px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  display: block;
+  overflow: hidden;
 }
-.img-card img{
+
+.img-card img {
   width: 100%;
   height: 200px;
-  object-fit:cover; 
+  object-fit: cover;
   transition: all .25s ease;
-} 
-.card-content {
-  padding:15px;
-  text-align:left;
 }
+
+.card-content {
+  padding: 15px;
+  text-align: left;
+}
+
 .card-title {
-  margin-top:0px;
+  margin-top: 0px;
   font-weight: 700;
   font-size: 1.65em;
 }
+
 .card-title a {
   color: #000;
   text-decoration: none !important;
 }
+
 .card-read-more {
   border-top: 1px solid #D4D4D4;
 }
+
 .card-read-more a {
   text-decoration: none !important;
-  padding:10px;
-  font-weight:600;
+  padding: 10px;
+  font-weight: 600;
   text-transform: uppercase
 }
-.jumbotron{
+
+.jumbotron {
   text-align: center;
 }
 
 /* Space out content a bit */
+
 body {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
+
+.header, .marketing, .footer {
   padding-right: 1rem;
   padding-left: 1rem;
 }
 
 /* Custom page header */
+
 .header {
   padding-bottom: 1rem;
   border-bottom: .05rem solid #e5e5e5;
 }
+
 /* Make the masthead heading the same height as the navigation */
+
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -130,6 +146,7 @@ body {
 }
 
 /* Custom page footer */
+
 .footer {
   padding-top: 1.5rem;
   color: white;
@@ -137,67 +154,74 @@ body {
   height: 100px;
   width: 100%;
   background-color: #4b4b4b;
-  margin-top:20px;
+  margin-top: 20px;
 }
 
-.footer nav{
+.footer nav {
   color: white;
 }
 
 /* Customize container */
+
 /* @media (min-width: 48em) {
   .container {
     max-width: 46rem;
   }
 } */
-.container-narrow > hr {
+
+.container-narrow>hr {
   margin: 2rem 0;
 }
 
 /* Main marketing message and sign up button */
+
 .jumbotron {
   text-align: center;
   border-bottom: .05rem solid #e5e5e5;
 }
+
 .jumbotron .btn {
   padding: .75rem 1.5rem;
   font-size: 1.5rem;
 }
 
 /* Supporting marketing content */
+
 .marketing {
   margin: 3rem 0;
 }
-.marketing p + h4 {
+
+.marketing p+h4 {
   margin-top: 1.5rem;
 }
 
 .form-inline {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -ms-flex-align: center;
-    align-items: center;
-    justify-content: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center;
 }
+
 @media (min-width: 576px) {
   .form-inline .form-control {
-      display: inline-block;
-      width: auto;
-      vertical-align: middle;
-      height: 50px;
-      width: 100%;
-      font-size: 24px;
-      margin-bottom: 16px;
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    height: 50px;
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 16px;
   }
 }
+
 /* Responsive: Portrait tablets and up */
+
 @media screen and (min-width: 48em) {
   /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  /* .footer {
+  .header, .marketing, /* .footer {
     padding-right: 0;
     padding-left: 0;
   } */
@@ -212,27 +236,29 @@ body {
 }
 
 /* MODAL */
+
 .modal-open .modal.modal-center {
-    display: flex!important;
-    align-items: center!important;
-    .modal-dialog {
-        flex-grow: 1;
-    }
+  display: flex!important;
+  align-items: center!important;
+  .modal-dialog {
+    flex-grow: 1;
+  }
 }
-.modal-dialog{  
+
+.modal-dialog {
   width: 380px;
 }
 
-
 /* OTHER */
-form.signup,
-form.login {
+
+form.signup, form.login {
   margin-top: 50px;
 }
 
 .member-name-wrapper {
   padding: 15px;
 }
+
 .member-name {
   font-size: 12px;
   color: #444;
@@ -242,3 +268,9 @@ form.login {
   line-height: 2.5;
 }
 
+/* Loading image */
+
+#loading-image {
+  height: 50px;
+  width: auto;
+}
