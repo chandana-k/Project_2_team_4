@@ -3,7 +3,8 @@ $("#searchButton").on("click", function (event) {
   event.preventDefault();
 
   // grab text from search box
-  var search = $("#searchButton").val();
+  var search = $("#searchVal").val();
+  console.log("Searching for: " + search);
 
   //  construct our URL
   // var queryURL = "https://openapi.etsy.com/v2/listings/trending?api_key=a2p83t9puv67kp0dnvsd4yka";
@@ -13,8 +14,9 @@ $("#searchButton").on("click", function (event) {
   // https://openapi.etsy.com/v2/listings/trending?api_key=a2p83t9puv67kp0dnvsd4yka
 
   $.post({
-    url: "/api/search"
-  }, search).then(function (response) {
+    url: "/api/search",
+    data: search,
+  }).then(function (response) {
     console.log(response);
   });
 
