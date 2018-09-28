@@ -7,25 +7,24 @@
           <a class="nav-link active" href="#" data-toggle="modal" data-target="#myModal">Login <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign up</a>
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#mySignupModal">Sign up</a>
         </li>
       </ul>
     </nav>
-    <!-- <h3 class="text-muted">Project name</h3> -->
   </div>
   <!-- Main Container -->
   <div class="jumbotron">
     <h1 class="display-3">WishWidget</h1>
     {{!-- <p class="lead">What are you wishing for today?</p> --}}
     <form class="form-inline mt-2 mt-md-0" id="etsy-search">
-      <input id="etsy-terms" class="form-control mr-sm-2" type="text" placeholder="What are you wishing for today?" aria-label="What are you wishing for today?"><br>
+      <input id="etsy-terms" class="form-control mr-sm-2" type="text" placeholder="What are you wishing for today?"
+        aria-label="What are you wishing for today?"><br>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
   <div class="content">
-    CONTENT
     <div class="container">
-      <div id="etsy-images"></div>
+      <div id="etsy-images" class="row"></div>
       <div class="row">
         {{#each wishes}}
         <!-- make this a for loop in handlebars -->
@@ -72,9 +71,45 @@
   </div>
 </div>
 
-{{!-- <form id="etsy-search">
-    <input id="etsy-terms" size="32">
-    <button>Search!</button>
-</form>
+{{!-- Sign up Modal --}}
+<div class="modal fade modal-center" id="mySignupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sign up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="signup">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="email-input" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password-input" placeholder="Password">
+          </div>
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span> <span class="msg"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div id="etsy-images"></div> --}}
+{{!-- Scripts needed for the non-authenticated user --}}
+
+{{!-- COMMENTED BECAUSE MODAL ISN'T WORKING YET --}}
+{{!--
+<script src="js/login.js"></script> --}}
+{{!--
+<script src="js/signup.js"></script> --}}
+<script src="js/non-authenticated.js"></script>
