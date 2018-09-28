@@ -1,14 +1,22 @@
 // Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
 var hbobj = [
-  "One",
-  "Two",
-  "Three",
-  "Four"
+  {
+    name: "karsten",
+    url: "http://etcetc.com",
+    img: "the image url"
+  },
+  {
+    name: "chandana",
+    url: "http://onetwo.com",
+    img: "the image url"
+  },
+  {
+    name: "greg",
+    url: "http://cheesy.com",
+    img: "the image url"
+  }
 ];
-
-console.log("hbsObject");
-
 
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
