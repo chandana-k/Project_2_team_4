@@ -18,12 +18,12 @@
     <h1 class="display-3">WishWidget</h1>
     {{!-- <p class="lead">What are you wishing for today?</p> --}}
     <form class="form-inline mt-2 mt-md-0" id="etsy-search">
-      <input id="etsy-terms" class="form-control mr-sm-2" type="text" placeholder="What are you wishing for today?" aria-label="What are you wishing for today?"><br>
+      <input id="etsy-terms" class="form-control mr-sm-2" type="text" placeholder="What are you wishing for today?"
+        aria-label="What are you wishing for today?"><br>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
   <div class="content">
-    CONTENT
     <div class="container">
       <div id="etsy-images"></div>
       <div class="row">
@@ -72,9 +72,14 @@
   </div>
 </div>
 
+{{!-- Scripts needed for the non-authenticated user --}}
+<script src="js/login.js"></script>
+<script src="js/signup.js"></script>
+<script src="js/non-authenticated.js"></script>
+
 {{!-- <form id="etsy-search">
-    <input id="etsy-terms" size="32">
-    <button>Search!</button>
+  <input id="etsy-terms" size="32">
+  <button>Search!</button>
 </form>
 
 <div id="etsy-images"></div> --}}

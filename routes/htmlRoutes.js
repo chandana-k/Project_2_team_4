@@ -1,5 +1,7 @@
 // Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
+
+// Test data to be removed later
 var hbobj = [
   {
     name: "karsten",
@@ -26,18 +28,15 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     // If the user already has an account send them to the main page
     if (req.user) {
-      // res.sendFile(path.join(__dirname, "../public/example.html")); // just for testing
-      res.redirect("/members");
+      res.render("auth");
     }
-    // res.sendFile(path.join(__dirname, "../public/example.html")); // just for testing
-    // res.sendFile(path.join(__dirname, "../public/signup.html"));
-    res.render("index", {obj: hbobj});
+    res.render("non-auth", { obj: hbobj });
   });
 
   app.get("/login", function (req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/members");
+      res.render("auth");
     }
     //res.render("login");
     res.sendFile(path.join(__dirname, "../public/login.html"));
