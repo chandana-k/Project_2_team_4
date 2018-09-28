@@ -33,13 +33,9 @@ module.exports = function (app) {
   app.get("/tables/name/:name", function (req, res) {
     var tName = req.params.name;
     console.log(tName);
-    console.log(db);
-    if (db[tName]){
-
-    }
-    // db[tName].findAll({}).then(function (resp) {
-    //   res.json(resp);
-    // });
+    db.sequelize.query("SELECT * FROM " + tName + ";").then(function (resp) {
+      res.json(resp);
+    });
   });
 
   // Create a new example
