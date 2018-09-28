@@ -16,9 +16,14 @@ $(function () {
         url: "/api/search",
         data: terms,
       }).then(function (response) {
-        var blocks = response.substring(response.indexOf("<body>") + 6, response.indexOf('<script src="js/search.js">'));
-        console.log(blocks);
-        $("#etsy-images").html(blocks);
+        if (response.message) {
+          $("#etsy-images").html(reponse.message + ". Please try again...");
+        }
+        else {
+          var blocks = response.substring(response.indexOf("<body>") + 6, response.indexOf('<script src="js/search.js">'));
+          console.log(blocks);
+          $("#etsy-images").html(blocks);
+        }
       });
     }
   });

@@ -70,7 +70,7 @@ module.exports = function (app) {
         // Print the response status code if a response was received
         console.log('statusCode:', response && response.statusCode);
 
-        if (response.statusCode === 200) {
+        if (!error) {
           var results = JSON.parse(unwrapJSONP(body)).results;
           var hbp = handlebarFriendlyJSON(results);
           // console.log(hbp);
@@ -82,7 +82,7 @@ module.exports = function (app) {
           }
         }
         else {
-          res.json({ message: "Error: " + response.statusCode });
+          res.json({ message: "Error: " + error.id });
         }
 
       });
