@@ -11,7 +11,7 @@ module.exports = function (app) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.json("/");
+    res.json("/members");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -37,7 +37,7 @@ module.exports = function (app) {
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
-    res.redirect(307, "/");
+    res.redirect("/");
   });
 
   // this function creates the db record and creates the general table.
@@ -53,7 +53,7 @@ module.exports = function (app) {
       console.log(resp.dataValues.id);
       // Create new general table for this new user... (This model hasn't been defined in models folder because we don)
       createGeneralTable(uname, uname + "General");
-      res.json("/");
+      res.redirect(307, "/api.login");
     }).catch(function (err) {
       console.log(err);
       res.json(err);
