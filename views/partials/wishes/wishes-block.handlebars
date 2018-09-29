@@ -1,18 +1,18 @@
 <div class="col-xs-12 col-sm-6 col-md-4">
 	<div class="card">
-		<a class="img-card" href="">
+		<a class="img-card" href="{{this.url}}" target="_blank">
 			<img src="{{this.img}}" />
 		</a>
 		<div class="card-content">
 			<h4 class="card-title">
-				<a href="#">
+				<p class="truncate" title="{{this.name}}">
 					{{{this.name}}}
-				</a>
+				</p>
 			</h4>
 			<div>
-				<p>
-					See item: {{this.url}}
-				</p>
+				<a href="{{this.url}}" target="_blank">
+					View on Etsy
+				</a>
 			</div>
 		</div>
 	</div>

@@ -73,9 +73,8 @@ module.exports = function (app) {
         if (!error) {
           var results = JSON.parse(unwrapJSONP(body)).results;
           var hbp = handlebarFriendlyJSON(results);
-          // console.log(hbp);
           if (req.user) {
-            res.render("auth", { wishes: hbp });
+            res.render("card", { wishes: hbp });
           }
           else {
             res.render("card", { wishes: hbp });
