@@ -53,7 +53,7 @@ module.exports = function (app) {
       password: pass,
       uname: uname
     }).then(function (resp) {
-      console.log(resp.dataValues.id);
+      console.log(resp.dataValues.uname);
       // Create new general table for this new user... (This model hasn't been defined in models folder because we don)
       createGeneralTable(uname, uname + "General");
       res.json("/members");
