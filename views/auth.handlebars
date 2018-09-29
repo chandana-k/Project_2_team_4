@@ -1,15 +1,23 @@
 <div class="container">
   <div class="header clearfix">
     <nav>
-      <!-- Nav to trigger modals -->
       <ul class="nav nav-pills float-right">
+        <li class="handle">
+          Welcome {{this.uname}}!
+        </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#" id="logout">Logout<span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="/logout">Logout <span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </nav>
   </div>
   <!-- Main Container -->
+  <div class="jumbotron-video">
+    <video loop="loop" autoplay="autoplay" muted="" poster="">
+      <source src="/imgs/phone_user_video.mp4" type="video/mp4">
+      <source src="" type="video/webm">
+    </video>
+  </div>
   <div class="jumbotron">
     <h1 class="display-3">WishWidget</h1>
     {{!-- <p class="lead">What are you wishing for today?</p> --}}
@@ -22,28 +30,15 @@
   <div class="content">
     <div class="container">
       <div id="etsy-images" class="row"></div>
-      <div class="row">
-        {{#each wishes}}
-        <!-- make this a for loop in handlebars -->
-        {{> wishes/wishes-block}}
-        {{/each}}
-      </div>
     </div>
   </div>
 </div>
+
 <footer class="footer">
   <p>&copy; WishWidget team 2018</p>
-  <nav>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link" href="https://github.com/chandana-k/Project_2_team_4">Github</a>
-      </li>
-    </ul>
-  </nav>
+  <a class="footer-link" href="https://github.com/chandana-k/Project_2_team_4">Github</a>
 </footer>
 
-
-{{!-- Scripts needed for the non-authenticated user --}}
-
+{{!-- Scripts needed for the authenticated user --}}
 <script src="js/logout.js"></script>
 <script src="js/authenticated.js"></script>

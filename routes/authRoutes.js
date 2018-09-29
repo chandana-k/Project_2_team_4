@@ -11,49 +11,52 @@ module.exports = function (app) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.json("/");
+    res.json("/members");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function (req, res) {
-    var email = req.body.email;
+    var d = req.body.data;
+    var email = d.email;
+    var pass = d.password;
 
-    db.User.findOne({ where: { email: email } })
-      .then(function (result) {
-        //console.log("THIS IS RESULT FROM FINDONE: ",result.email)
-        if (result !== null) {
-          console.log("EMAIL MATCHED");
-          res.json({ message: "exists" });
-        } else {
-          console.log("NO MATCHING EMAIL");
-          addRecord(req, res);
-        }
-      });
+    db.User.findOne({
+      where: {
+        email: email
+      }
+    }).then(function (result) {
+      if (result !== null) {
+        console.log("EMAIL MATCHED");
+        res.json({ message: "exists" });
+      } else {
+        console.log("NO MATCHING EMAIL");
+        addRecord(email, pass, res);
+      }
+    });
 
   });
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
-    res.redirect(307, "/");
+    res.redirect("/");
   });
 
   // this function creates the db record and creates the general table.
-  function addRecord(req, res) {
-    var uname = req.body.email.substring(0, req.body.email.indexOf("@"));
+  function addRecord(email, pass, res) {
+    var uname = email.substring(0, email.indexOf("@"));
     uname = removePunctuation(uname);
-    console.log("Removed punctuation: " + uname);
     db.User.create({
-      email: req.body.email,
-      password: req.body.password,
+      email: email,
+      password: pass,
       uname: uname
     }).then(function (resp) {
-      console.log(resp.dataValues.id);
+      console.log(resp.dataValues.uname);
       // Create new general table for this new user... (This model hasn't been defined in models folder because we don)
       createGeneralTable(uname, uname + "General");
-      res.json("/");
+      res.json("/members");
     }).catch(function (err) {
       console.log(err);
       res.json(err);

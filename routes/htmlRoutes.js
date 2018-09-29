@@ -1,49 +1,37 @@
 // Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
-
-// Test data to be removed later
-var hbobj = [
-  {
-    name: "karsten",
-    url: "http://etcetc.com",
-    img: "the image url"
-  },
-  {
-    name: "chandana",
-    url: "http://onetwo.com",
-    img: "the image url"
-  },
-  {
-    name: "greg",
-    url: "http://cheesy.com",
-    img: "the image url"
-  }
-];
-
-// Requiring our custom middleware for checking if a user is logged in
-// var isAuthenticated = require("../config/middleware/isAuthenticated");
+// Authentication middleware
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
 
   app.get("/", function (req, res) {
     // If the user already has an account send them to the main page
     if (req.user) {
-      res.render("auth", { obj: hbobj });
+      res.redirect("/members");
     }
-    res.render("non-auth", { obj: hbobj });
+    res.render("non-auth", { message: "not authenticated" });
   });
 
   app.get("/login", function (req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.render("auth", { message: "ok" });
+      res.redirect("/members");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
+  app.get("/members", isAuthenticated, function (req, res) {
+    res.render("auth", {
+      uname: [
+        req.user.uname
+      ]
+    });
+  });
+
   app.get("/signup", function (req, res) {
     if (req.user) {
-      res.render("auth", { message: "ok" });
+      res.redirect("/members");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
