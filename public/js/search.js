@@ -22,7 +22,11 @@ $(function () {
         else {
           var blocks = response.substring(response.indexOf("<body>") + 6, response.indexOf('<script src="js/search.js">'));
           $("#etsy-images").empty();
+          $("#auth-message").fadeIn(200, function () {
+          });
           $("#etsy-images").html(blocks);
+          $("#auth-message").fadeOut(4000, function () {
+          });
         }
       });
     }

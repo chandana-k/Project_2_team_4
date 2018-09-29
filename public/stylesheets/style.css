@@ -282,3 +282,10 @@ form.signup, form.login {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+#auth-message {
+  font-size: 2em;
+  color: rgb(255, 94, 0);
+  text-align: center;
+  display: none;
+}
