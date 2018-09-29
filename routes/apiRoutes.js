@@ -14,18 +14,18 @@ module.exports = function (app) {
   // Get current user
   app.get("/users/me", function (req, res) {
     if (req.user) {
-      res.json({
-        me: {
-          id: req.user.id,
-          email: req.user.email,
-          uname: req.user.uname
-        }
+      db.User.findOne({
+        where: {
+          id: req.user.id
+        },
+        include: [{ model: db.Table, as: "canView" }]
+      }).then(function (resp) {
+        res.json(resp);
       });
     }
     else {
       res.json({ message: "not authenticaed" });
     }
-
   });
 
   // Get a user by ID
@@ -44,6 +44,18 @@ module.exports = function (app) {
   // Get all table names
   app.get("/tables", function (req, res) {
     db.Table.findAll({}).then(function (resp) {
+      res.json(resp);
+    });
+  });
+
+  // Get one table by ID
+  app.get("/tables/:id", function (req, res) {
+    db.Table.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{ model: db.User, as: 'hasViewers' }]
+    }).then(function (resp) {
       res.json(resp);
     });
   });
