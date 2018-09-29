@@ -28,7 +28,7 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     // If the user already has an account send them to the main page
     if (req.user) {
-      res.render("auth");
+      res.render("auth", { obj: hbobj });
     }
     res.render("non-auth", { obj: hbobj });
   });

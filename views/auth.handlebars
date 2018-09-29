@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <!-- Nav to trigger modals -->
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" id="logout">Logout<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Main Container -->
+  <div class="jumbotron">
+    <h1 class="display-3">WishWidget</h1>
+    {{!-- <p class="lead">What are you wishing for today?</p> --}}
+    <form class="form-inline mt-2 mt-md-0" id="etsy-search">
+      <input id="etsy-terms" class="form-control mr-sm-2" type="text" placeholder="What are you wishing for today?"
+        aria-label="What are you wishing for today?"><br>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+  <div class="content">
+    <div class="container">
+      <div id="etsy-images" class="row"></div>
+      <div class="row">
+        {{#each wishes}}
+        <!-- make this a for loop in handlebars -->
+        {{> wishes/wishes-block}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <p>&copy; WishWidget 2018</p>
+  <nav>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Social</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Github</a>
+      </li>
+    </ul>
+  </nav>
+</footer>
+
+
+{{!-- Scripts needed for the non-authenticated user --}}
+
+<script src="js/logout.js"></script>
+<script src="js/authenticated.js"></script>

@@ -3,7 +3,7 @@
 // Handles logging user out by clicking nav on front end
 
 // Click handler
-$("#logout-link").on("click", function (event) {
+$("#logout").on("click", function (event) {
   // Prevent default action (#)
   event.preventDefault();
   // Hit logout route
