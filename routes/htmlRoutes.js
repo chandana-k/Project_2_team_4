@@ -22,7 +22,11 @@ module.exports = function (app) {
   });
 
   app.get("/members", isAuthenticated, function (req, res) {
-    res.render("auth", { message: "ok" });
+    res.render("auth", {
+      uname: [
+        req.user.uname
+      ]
+    });
   });
 
   app.get("/signup", function (req, res) {

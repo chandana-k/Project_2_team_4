@@ -16,17 +16,20 @@ $(document).ready(function () {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
     emailInput.val("");
     passwordInput.val("");
+    signUpUser(userData.email, userData.password);
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(email, password) {
+    console.log(`${email} | ${password}`);
     $.post("/api/signup", {
-      email: email,
-      password: password
+      data: {
+        email: email,
+        password: password
+      }
     }).then(function (data) {
       if (data.message === "exists") {
         alert("A user with the same email already exists. Try logging in.");

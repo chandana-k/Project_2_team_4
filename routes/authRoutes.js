@@ -18,19 +18,23 @@ module.exports = function (app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function (req, res) {
-    var email = req.body.email;
+    var d = req.body.data;
+    var email = d.email;
+    var pass = d.password;
 
-    db.User.findOne({ where: { email: email } })
-      .then(function (result) {
-        //console.log("THIS IS RESULT FROM FINDONE: ",result.email)
-        if (result !== null) {
-          console.log("EMAIL MATCHED");
-          res.json({ message: "exists" });
-        } else {
-          console.log("NO MATCHING EMAIL");
-          addRecord(req, res);
-        }
-      });
+    db.User.findOne({
+      where: {
+        email: email
+      }
+    }).then(function (result) {
+      if (result !== null) {
+        console.log("EMAIL MATCHED");
+        res.json({ message: "exists" });
+      } else {
+        console.log("NO MATCHING EMAIL");
+        addRecord(email, pass, res);
+      }
+    });
 
   });
 
@@ -41,19 +45,18 @@ module.exports = function (app) {
   });
 
   // this function creates the db record and creates the general table.
-  function addRecord(req, res) {
-    var uname = req.body.email.substring(0, req.body.email.indexOf("@"));
+  function addRecord(email, pass, res) {
+    var uname = email.substring(0, email.indexOf("@"));
     uname = removePunctuation(uname);
-    console.log("Removed punctuation: " + uname);
     db.User.create({
-      email: req.body.email,
-      password: req.body.password,
+      email: email,
+      password: pass,
       uname: uname
     }).then(function (resp) {
       console.log(resp.dataValues.id);
       // Create new general table for this new user... (This model hasn't been defined in models folder because we don)
       createGeneralTable(uname, uname + "General");
-      res.redirect(307, "/api.login");
+      res.json("/members");
     }).catch(function (err) {
       console.log(err);
       res.json(err);
@@ -62,7 +65,6 @@ module.exports = function (app) {
 
   function createGeneralTable(uname, tabName) {
     db.sequelize.query("CREATE TABLE " + tabName + " (id INT not null auto_increment, itemName VARCHAR(255) not null UNIQUE, itemUrl varchar(255) not null, public BOOLEAN default false, primary key (id));").then(function (resp) {
-      console.log(resp);
       db.User.findOne({
         where: {
           uname: uname
@@ -72,7 +74,6 @@ module.exports = function (app) {
           tableName: tabName,
           UserId: resp.dataValues.id
         }).then(function (resp) {
-          console.log(resp);
           console.log("Table entry success");
         });
       });

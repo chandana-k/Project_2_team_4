@@ -320,3 +320,7 @@ form.signup, form.login {
 .footer-link {
   color: lightgray;
 }
+
+.handle {
+  padding-right: 10px;
+}
