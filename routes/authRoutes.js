@@ -65,6 +65,7 @@ module.exports = function (app) {
 
   function createGeneralTable(uname, tabName) {
     db.sequelize.query("CREATE TABLE " + tabName + " (id INT not null auto_increment, itemName VARCHAR(255) not null UNIQUE, itemUrl varchar(255) not null, public BOOLEAN default false, primary key (id));").then(function (resp) {
+      console.log(resp);
       db.User.findOne({
         where: {
           uname: uname
@@ -74,6 +75,7 @@ module.exports = function (app) {
           tableName: tabName,
           UserId: resp.dataValues.id
         }).then(function (resp) {
+          console.log(resp);
           console.log("Table entry success");
         });
       });
