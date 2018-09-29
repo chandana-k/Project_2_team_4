@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-// var removePunctuation = require('remove-punctuation');
+var removePunctuation = require('remove-punctuation');
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -11,7 +11,7 @@ module.exports = function (app) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.end("/");
+    res.json("/");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -25,6 +25,7 @@ module.exports = function (app) {
         //console.log("THIS IS RESULT FROM FINDONE: ",result.email)
         if (result !== null) {
           console.log("EMAIL MATCHED");
+          res.json({ message: "exists" });
         } else {
           console.log("NO MATCHING EMAIL");
           addRecord(req, res);
@@ -36,27 +37,11 @@ module.exports = function (app) {
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
-    res.redirect("/");
+    res.redirect(307, "/");
   });
 
-  // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function (req, res) {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    }
-    else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      });
-    }
-  });
-
-
-  function addRecord(req, res) { //this function creates the db record and creates the general table.
+  // this function creates the db record and creates the general table.
+  function addRecord(req, res) {
     var uname = req.body.email.substring(0, req.body.email.indexOf("@"));
     uname = removePunctuation(uname);
     console.log("Removed punctuation: " + uname);
@@ -68,17 +53,15 @@ module.exports = function (app) {
       console.log(resp.dataValues.id);
       // Create new general table for this new user... (This model hasn't been defined in models folder because we don)
       createGeneralTable(uname, uname + "General");
-      res.redirect(307, "/api/login");
+      res.json("/");
     }).catch(function (err) {
       console.log(err);
       res.json(err);
-      // res.status(422).json(err.errors[0].message);
     });
   }
 
   function createGeneralTable(uname, tabName) {
     db.sequelize.query("CREATE TABLE " + tabName + " (id INT not null auto_increment, itemName VARCHAR(255) not null UNIQUE, itemUrl varchar(255) not null, public BOOLEAN default false, primary key (id));").then(function (resp) {
-
       console.log(resp);
       db.User.findOne({
         where: {
