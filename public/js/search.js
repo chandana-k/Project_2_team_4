@@ -21,7 +21,7 @@ $(function () {
         }
         else {
           var blocks = response.substring(response.indexOf("<body>") + 6, response.indexOf('<script src="js/search.js">'));
-          console.log(blocks);
+          $("#etsy-images").empty();
           $("#etsy-images").html(blocks);
         }
       });
