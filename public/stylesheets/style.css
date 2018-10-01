@@ -147,16 +147,6 @@ body {
 
 /* Custom page footer */
 
-.footer {
-  padding-top: 1.5rem;
-  color: white;
-  border-top: .05rem solid #e5e5e5;
-  height: 100px;
-  width: 100%;
-  background-color: #4b4b4b;
-  margin-top: 20px;
-}
-
 .footer nav {
   color: white;
 }
