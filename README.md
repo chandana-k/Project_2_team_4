@@ -15,4 +15,17 @@ Wish-Widget is a Full Stack app that allows for creating and shopping a personal
 - Upon login, when a user enters and submits an item for their wishlist shopping in the searchquery, the cards below are populated with the images and links from Etsy data API.   
 ![Query page screenshot](/public/imgs/search-query-page.png)         
 - When clicked on the desired image or view details, the user is redirected into the Etsy.com website for further shopping regarding the item to be bought/added into their wishlist.     
-![Shopping-link page screenshot](/public/imgs/etsy.com-page.png)       
+![Shopping-link page screenshot](/public/imgs/etsy.com-page.png)   
+- Reverse Engineered Database Architecture.      
+![DB-architecture screenshot](/public/imgs/db-arch.png)    
+
+### Authors           
+- Karsten - [krab7191](https://github.com/krab7191)         
+- Greg - [HelpfulOwl](https://github.com/HelpfulOwl)           
+- Lacey - [laceycmccomas](https://github.com/laceycmccomas)          
+- Victor - [vicgarrido](https://github.com/vicgarrido)         
+- Chandana - [chandana-k](https://github.com/chandana-k)              
+
+### License             
+This project is licensed under the UNC Coding Bootcamp 2018.      
+          
